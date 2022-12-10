@@ -1,4 +1,4 @@
-import { useLazyQuery, gql, useMutation } from '@apollo/client';
+ import { useLazyQuery, gql, useMutation } from '@apollo/client';
 import useLocalStorageState from './useLocalStorage';
 
 const GET_LOGIN_USER = gql`
@@ -28,7 +28,7 @@ export const useLogin = (setLoginSuccess) => {
       if (user.username === 'UsernameOrPasswordNotMatched') {
         alert('Login Failed: Username Or Password Not Matched');
       } else {
-        setName(data)
+        setName({'id': data.userLogin.id, 'likedList': data.userLogin.likedList, 'myPhotos': data.userLogin.myPhotos, 'username': data.userLogin.username})
         setLoginSuccess(true)
       }
     }

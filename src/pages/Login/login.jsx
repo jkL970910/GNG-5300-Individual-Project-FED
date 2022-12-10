@@ -4,7 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.css';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router';
-import { useLogin } from '../hooks/useLogin';
+import { useLogin } from '../../hooks/useLogin';
 
 export function LoginPage() {
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -22,10 +22,6 @@ export function LoginPage() {
     }
   }, [navigate, loginSuccess])
   
-  const onFinishFailed = errorInfo => {
-    alert('Submit Failed:', errorInfo);
-  };
-  
   return (
     <motion.div 
       className="login-page"
@@ -41,7 +37,6 @@ export function LoginPage() {
           name="login-form"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
         >
           <p className="form-title">Welcome back</p>
           <p>Login to the Image Channel</p>

@@ -4,7 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import './login.css';
 import { useNavigate } from 'react-router';
-import { useRegister } from '../hooks/useLogin';
+import { useRegister } from '../../hooks/useLogin';
 
 export function RegisterPage() {
   const [registerSuccess, setRegisterSuccess] = useState(false);

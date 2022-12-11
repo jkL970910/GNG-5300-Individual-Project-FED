@@ -14,10 +14,38 @@ const GET_PHOTO_GALLERY = gql`
 `;
 
 export const usePhotoGallery = () => {
-  const {data: photos, loading, error, refetch} = useQuery(GET_PHOTO_GALLERY);
+  const {data, loading, error, refetch} = useQuery(GET_PHOTO_GALLERY, {
+    fetchPolicy: 'cache-and-network'
+  });
 
   return {
-    photos,
+    data,
+    loading,
+    error,
+    refetch
+  };
+};
+
+const GET_LIKED_LIST = gql`
+  query GetLikedPhotoList($username: String!) {
+    getLikePhotoList(username: $username) {
+      id
+      title
+      description
+      uploadUser
+      imgUrl
+      imgLocal
+    }
+  }
+`;
+
+export const useLikedPhotoList = () => {
+  const {data, loading, error, refetch} = useQuery(GET_LIKED_LIST, {
+    fetchPolicy: 'cache-and-network'
+  });
+
+  return {
+    data,
     loading,
     error,
     refetch

@@ -2,13 +2,19 @@ import React from 'react';
 import { Card, message } from 'antd';
 import './index.css';
 import copy from 'copy-to-clipboard';
-import { HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { HeartOutlined, ShareAltOutlined, LoadingOutlined } from '@ant-design/icons';
 
 const ImageCard = (props) => {
   const {
-    data
+    data,
+    loading,
+    liked,
+    onFavoriteChange
   } = props;
-  const {copyright, date, explanation, url, title, media_type, liked} = data;
+  const {id, description, imgLocal, imgUrl, title, uploadUser} = data;
+
+  const url = imgUrl === '' ? imgLocal : imgUrl;
+  
 
   const copyCode = () => {
     if (copy(url, {
@@ -24,23 +30,25 @@ const ImageCard = (props) => {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <div style={{ textAlign: 'left' }}>
-            {media_type && media_type === 'image' ? <img src={url} alt='' /> : ''}
-            {media_type && media_type === 'video' ? <iframe src={url} title={url} allowfullscreen="true"/> : ''}
+            <img src={url} alt='' />
           </div>
           <div style={{ textAlign: 'left', flex: 1, margin: '30px' }}>
             <p style={{ fontSize: '48px', fontWeight: 'bold' }}>{title}</p>
             <div>
-              <p style={{ fontSize: '24px', display:'inline-block' }}>Date: {date} | {copyright || 'Anonymous'}</p>
+              <p style={{ fontSize: '24px', display:'inline-block' }}>Created By: {uploadUser}</p>
               <ShareAltOutlined 
                 style={{ float: 'right', fontSize: '32px', marginLeft: '8px' }} 
                 onClick={copyCode}
               />
+              {loading ? 
+                <LoadingOutlined style={{ fontSize: 25 }} />
+              :
               <HeartOutlined 
                 style={{ float: 'right', fontSize: '32px', color: liked ? 'red' : ''}} 
-                onClick={() => {}}
-              />
+                onClick={() => onFavoriteChange(id, liked)}
+              />}
             </div>
-            <p style={{ fontSize: '30px' }}>{explanation}</p>
+            <p style={{ fontSize: '30px' }}>{description}</p>
           </div>
         </div>
       </Card>

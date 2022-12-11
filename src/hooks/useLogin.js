@@ -12,14 +12,6 @@ const GET_LOGIN_USER = gql`
   }
 `;
 
-const CREATE_USER = gql`
-  mutation Register($username: String!, $password: String!) {
-    addNewUser(username: $username, password: $password) {
-      username
-    }
-  }
-`;
-
 export const useLogin = (setLoginSuccess) => {
   const [, setName] = useLocalStorageState('current_user');
   const [getLoginUser] = useLazyQuery(GET_LOGIN_USER, {
@@ -38,6 +30,14 @@ export const useLogin = (setLoginSuccess) => {
     getLoginUser,
   };
 };
+
+const CREATE_USER = gql`
+  mutation Register($username: String!, $password: String!) {
+    addNewUser(username: $username, password: $password) {
+      username
+    }
+  }
+`;
 
 export const useRegister = (setRegisterSuccess) => {
   const [getRegister] = useMutation(CREATE_USER, {

@@ -7,18 +7,26 @@ import { useUserLikedPhoto, useUserUnlikedPhoto } from '../../hooks/useUserUpdat
 const ImagePanel = (props) => {
   const {
     data,
+    refetch
   } = props;
 
-  const [name,] = useLocalStorageState('current_user')
+  const [user,setUser] = useLocalStorageState('current_user')
   const [, setUploadSuccess] = useState(false);
-  const {likedPhoto, likedLoading} = useUserLikedPhoto(setUploadSuccess)
-  const {unlikedPhoto, unlikedloading} = useUserUnlikedPhoto(setUploadSuccess)
 
+  const onUploadSuccess = (uploadSuccess, user) => {
+    setUploadSuccess(uploadSuccess)
+    setUser(user)
+    refetch()
+  }
+
+  const {likedPhoto, likedLoading} = useUserLikedPhoto(onUploadSuccess)
+  const {unlikedPhoto, unlikedloading} = useUserUnlikedPhoto(onUploadSuccess)
+  
   const favoriteUpdate = (photoId, liked) => {
     liked ? 
-    unlikedPhoto({ variables: {username: name['username'], photoId: photoId}})
+    unlikedPhoto({ variables: {username: user['username'], photoID: photoId}})
     :
-    likedPhoto({ variables: {username: name['username'], photoId: photoId}})
+    likedPhoto({ variables: {username: user['username'], photoID: photoId}})
   }
 
   return (
@@ -29,8 +37,8 @@ const ImagePanel = (props) => {
         </div>
       </Col>
       {data && data.map((o) => (
-        <Col xl={24} lg={24} sm={24} xs={24}>
-          <ImageCard data={o} loading={likedLoading || unlikedloading} liked={name['likedList'].includes(o.id)} onFavoriteChange={favoriteUpdate}/>
+        <Col key={o.id} xl={24} lg={24} sm={24} xs={24}>
+          <ImageCard data={o} loading={likedLoading || unlikedloading} liked={user['likedList']?.includes(o.id)} onFavoriteChange={favoriteUpdate}/>
         </Col>
       ))}
     </Row>

@@ -14,7 +14,6 @@ const ImageCard = (props) => {
   const {id, description, imgLocal, imgUrl, title, uploadUser} = data;
 
   const url = imgUrl === '' ? imgLocal : imgUrl;
-  
 
   const copyCode = () => {
     if (copy(url, {

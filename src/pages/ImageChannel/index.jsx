@@ -2,6 +2,7 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import './index.css';
 import TopHeader from '../../components/TopHeader';
+import { Outlet } from "react-router";
 
 export function ImageChannel() {
     return (
@@ -12,6 +13,7 @@ export function ImageChannel() {
             exit={{opacity: 0}}
         >
             <TopHeader/>
+            <Outlet/>
         </motion.div>
     );
 }

@@ -13,6 +13,7 @@ const Suspense = (props) => {
     onRetry = () => {},
     style: cssStyle = { minHeight: 200 },
     children,
+    emptyDescription = "No Photos yet, upload your photo right now!"
   } = props;
   const antIcon = <LoadingOutlined style={{ fontSize: 25 }} />;
   const isEmptyData = isEmpty(data);
@@ -24,7 +25,7 @@ const Suspense = (props) => {
           <div className={style.errorWrap} style={{ ...cssStyle }}>
             <Empty
               image={<MehOutlined style={{ fontSize: 30, color: '#acacac' }} />}
-              description="No Photos yet, upload your photo right now!"
+              description={emptyDescription}
               imageStyle={{ height: 40 }}
             />
           </div>

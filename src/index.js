@@ -6,9 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore'
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all'
+  }
+}
+
 const client = new ApolloClient({
   uri: "http://ec2-18-206-228-16.compute-1.amazonaws.com/graphql",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  defaultOptions
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -6,7 +6,7 @@ import { usePhotoGallery } from '../../../hooks/usePhotoGallery';
 import ImagePanel from '../../../components/ImagePanel';
 
 export function PhotoGallery() {
-    const {data, loading, error, refresh} = usePhotoGallery();
+    const {data, loading, error, refetch} = usePhotoGallery();
     return (
         <Row gutter={8} className='main'>
             <Col span={24}>
@@ -15,9 +15,9 @@ export function PhotoGallery() {
                         loading={loading}
                         error={error}
                         data={data}
-                        onRetry={refresh}
+                        onRetry={refetch}
                     >
-                        <ImagePanel data={data?.getAllPhotos} />
+                        <ImagePanel data={data?.getAllPhotos} refetch={refetch}/>
                     </Suspense>
                 </StyleCard>
             </Col>

@@ -3,6 +3,7 @@ import { useMutation, gql } from '@apollo/client';
 const LIKE_PHOTO = gql`
   mutation LikePhoto($username: String!, $photoID: String!) {
     likePhoto(username: $username, photoID: $photoID) {
+        id
         username
         myPhotos
         likedList
@@ -13,6 +14,7 @@ const LIKE_PHOTO = gql`
 const UNLIKE_PHOTO = gql`
   mutation UnlikePhoto($username: String!, $photoID: String!) {
     unLikePhoto(username: $username, photoID: $photoID) {
+        id
         username
         myPhotos
         likedList
@@ -20,14 +22,14 @@ const UNLIKE_PHOTO = gql`
   }
 `;
 
-export const useUserLikedPhoto = (setUploadSuccess) => {
+export const useUserLikedPhoto = (onUploadSuccess) => {
     const [likedPhoto, {loading: likedLoading}] = useMutation(LIKE_PHOTO, {
         onCompleted: (data) => {
-            const photo = data['uploadPhoto']
-            if (photo.title.includes('Error')) {
-            alert(`Upload Failed: ${photo.title}`);
+            const user = data['likePhoto']
+            if (user.username.includes('Error')) {
+                alert(`Upload Failed: ${user.username}`);
             } else {
-            setUploadSuccess(true)
+                onUploadSuccess(true, user)
             }
         }
     });
@@ -38,14 +40,14 @@ export const useUserLikedPhoto = (setUploadSuccess) => {
     };
 };
 
-export const useUserUnlikedPhoto = (setUploadSuccess) => {
+export const useUserUnlikedPhoto = (onUploadSuccess) => {
     const [unlikedPhoto, {loading: unlikedloading}] = useMutation(UNLIKE_PHOTO, {
         onCompleted: (data) => {
-            const photo = data['uploadPhoto']
-            if (photo.title.includes('Error')) {
-                alert(`Upload Failed: ${photo.title}`);
+            const user = data['unLikePhoto']
+            if (user.username.includes('Error')) {
+                alert(`Upload Failed: ${user.username}`);
             } else {
-                setUploadSuccess(true)
+                onUploadSuccess(true, user)
             }
         }
     });

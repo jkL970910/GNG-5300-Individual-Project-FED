@@ -4,9 +4,11 @@ import StyleCard from '../../../components/StyleCard';
 import Suspense from '../../../components/Suspense';
 import ImagePanel from '../../../components/ImagePanel';
 import { useLikedPhotoList } from '../../../hooks/usePhotoGallery';
+import useLocalStorageState from '../../../hooks/useLocalStorage';
 
 export function MyFavorite() {
-    const {data, loading, error, refresh} = useLikedPhotoList();
+    const [name,] = useLocalStorageState('current_user')
+    const {data, loading, error, refetch} = useLikedPhotoList(name.username);
     return (
         <Row gutter={8} className='main'>
             <Col span={24}>
@@ -14,10 +16,11 @@ export function MyFavorite() {
                     <Suspense
                         loading={loading}
                         error={error}
-                        data={data}
-                        onRetry={refresh}
+                        data={data?.getLikePhotoList}
+                        onRetry={refetch}
+                        emptyDescription={"No photos yet, select your first favorite photo now!"}
                     >
-                        <ImagePanel data={data?.getAllPhotos} />
+                        <ImagePanel data={data?.getLikePhotoList} refetch={refetch}/>
                     </Suspense>
                 </StyleCard>
             </Col>

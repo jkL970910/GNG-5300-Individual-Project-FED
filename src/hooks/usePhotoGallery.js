@@ -14,9 +14,7 @@ const GET_PHOTO_GALLERY = gql`
 `;
 
 export const usePhotoGallery = () => {
-  const {data, loading, error, refetch} = useQuery(GET_PHOTO_GALLERY, {
-    fetchPolicy: 'cache-and-network'
-  });
+  const {data, loading, error, refetch} = useQuery(GET_PHOTO_GALLERY);
 
   return {
     data,
@@ -39,9 +37,11 @@ const GET_LIKED_LIST = gql`
   }
 `;
 
-export const useLikedPhotoList = () => {
+export const useLikedPhotoList = (name) => {
   const {data, loading, error, refetch} = useQuery(GET_LIKED_LIST, {
-    fetchPolicy: 'cache-and-network'
+    variables: {
+      username: name
+    }
   });
 
   return {

@@ -1,4 +1,4 @@
- import { useLazyQuery, gql, useMutation } from '@apollo/client';
+ import { useLazyQuery, useQuery, gql, useMutation } from '@apollo/client';
 import useLocalStorageState from './useLocalStorage';
 
 const GET_LOGIN_USER = gql`
@@ -53,5 +53,37 @@ export const useRegister = (setRegisterSuccess) => {
 
   return {
     getRegister,
+  };
+};
+
+const GET_CURRENT_USER = gql`
+  query Fetch($username: String!) {
+    getUserByUsername(username: $username) {
+      id
+      username
+      myPhotos
+      likedList
+    }
+  }
+`;
+
+export const useUserFetch = (username, setUser) => {
+  const {refetch} = useQuery(GET_CURRENT_USER, {
+    variables: {
+      username: username
+    },
+    onCompleted: (data) => {
+      const user = data['getUserByUsername']
+      setUser({
+        id: user.id,
+        username: user.username,
+        myPhotos: user.myPhotos, 
+        likedList: user.likedList
+      })
+    }
+  });
+
+  return {
+    refetch
   };
 };

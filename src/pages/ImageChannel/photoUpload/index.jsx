@@ -52,16 +52,17 @@ export function PhotoUpload() {
     return (
         <Row gutter={8} className='main'>
             <Col span={24}>
-                <StyleCard style={{ background: 'rgb(218, 220, 224)' }}>
+                <StyleCard title={"Create Your Photo Here"} style={{ background: "rgba(0,0,0,0.2)" }}>
                     <FileUploadZone onDrop={handleOnDrop} />
+                    <p>Or</p>
+                    <Button
+                        onClick={() => {setShowModal(true)}}
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2, backgroundColor: '#3da58a', ':hover': {bgcolor:'green'}}}
+                        >
+                        Upload Image From Network
+                    </Button>
                 </StyleCard>
-                <Button
-                    onClick={() => {setShowModal(true)}}
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, backgroundColor: '#3da58a', ':hover': {bgcolor:'green'}}}
-                    >
-                    Upload Image From Network
-                </Button>
             </Col>
             <Modal
                 title={'Merge Selected Columns'}
@@ -89,6 +90,7 @@ export function PhotoUpload() {
             >
                 <Form 
                     id={'photoForm'}
+                    key={'photoForm'}
                     name={'photoForm'}
                     onFinish={handleUpload}
                     form={form}
@@ -111,14 +113,14 @@ export function PhotoUpload() {
                         name="localUrl"
                         label="Uploaded Local Image"
                     >
-                        <Input.TextArea disabled= {true} defaultValue={file} placeholder={file ? 'URL: ' + file.toString().substring(0,30) + '...' : 'No local image uploaded'}/>
+                        <Input.TextArea disabled= {true} initialValues={file} placeholder={file ? 'URL: ' + file.toString().substring(0,30) + '...' : 'No local image uploaded'}/>
                     </Form.Item>
                     <Form.Item 
                         name="imageUrl"
                         label="Uploaded Network Image"
                         rules={[{ required: !file, message: "Please input a network image url or upload from local" }]}
                     >
-                        <Input defaultValue='' disabled= {file}/>
+                        <Input initialValues='' disabled= {file}/>
                     </Form.Item>
                 </Form>
             </Modal>

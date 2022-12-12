@@ -51,3 +51,31 @@ export const useLikedPhotoList = (name) => {
     refetch
   };
 };
+
+const GET_USER_LIST = gql`
+  query GetUserPhotoList($username: String!) {
+    getUserPhotoList(username: $username) {
+      id
+      title
+      description
+      uploadUser
+      imgUrl
+      imgLocal
+    }
+  }
+`;
+
+export const useUserPhotoList = (name) => {
+  const {data, loading, error, refetch} = useQuery(GET_USER_LIST, {
+    variables: {
+      username: name
+    }
+  });
+
+  return {
+    data,
+    loading,
+    error,
+    refetch
+  };
+}

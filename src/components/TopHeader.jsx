@@ -14,7 +14,7 @@ export function TopHeader() {
     function GetButton({title, url}) {
         let location = useLocation()
         return (
-            <Radio.Button style={{background: location.pathname === url ? "#bf80ff" : null}} value={url}>{title}</Radio.Button>
+            <Radio.Button key={url} style={{background: location.pathname === url ? "#bf80ff" : null}} value={url}>{title}</Radio.Button>
         )
     }
 

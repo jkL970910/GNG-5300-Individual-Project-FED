@@ -1,5 +1,6 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
+import StyleCard from "../StyleCard";
 
 function Dropzone({ onDrop, open }) {
     const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
@@ -12,7 +13,7 @@ function Dropzone({ onDrop, open }) {
       </li>
     ));
     return (
-      <div>
+      <StyleCard style={{ background: 'rgb(218, 220, 224)' }}>
         <div {...getRootProps({ className: "dropzone" })}>
           <input className="input-zone" {...getInputProps()} />
           <div className="text-center">
@@ -33,7 +34,7 @@ function Dropzone({ onDrop, open }) {
         <aside>
           <ul>{files}</ul>
         </aside>
-      </div>
+      </StyleCard>
     );
   }
   export default Dropzone;

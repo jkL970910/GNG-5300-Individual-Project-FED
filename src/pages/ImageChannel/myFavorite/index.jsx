@@ -12,7 +12,7 @@ export function MyFavorite() {
     return (
         <Row gutter={8} className='main'>
             <Col span={24}>
-                <StyleCard style={{ background: 'rgb(218, 220, 224)' }}>
+                <StyleCard style={{ background: "rgba(0,0,0,0.2)" }}>
                     <Suspense
                         loading={loading}
                         error={error}

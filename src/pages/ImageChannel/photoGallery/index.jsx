@@ -14,7 +14,7 @@ export function PhotoGallery() {
                 data={data}
                 onRetry={refetch}
             >
-                <ImagePanel data={data?.getAllPhotos} refetch={refetch}/>
+                <ImagePanel panelTitle={'Explore Landscapes Here'} data={data?.getAllPhotos} refetch={refetch}/>
             </Suspense>
         </StyleCard>
     );

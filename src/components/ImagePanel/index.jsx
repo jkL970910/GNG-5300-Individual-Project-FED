@@ -7,7 +7,8 @@ import { useUserLikedPhoto, useUserUnlikedPhoto } from '../../hooks/useUserUpdat
 const ImagePanel = (props) => {
   const {
     data,
-    refetch
+    refetch,
+    panelTitle,
   } = props;
 
   const [user,setUser] = useLocalStorageState('current_user')
@@ -34,7 +35,7 @@ const ImagePanel = (props) => {
       <Col xl={24} lg={24} sm={24} xs={24}>
         <div style={{display: 'flex', justifyContent: 'center'}}>
           <div style={{ marginTop: '-24px', marginBottom: '16px', display: 'inline-block', float: 'center' }}>
-            <p style={{ fontSize: '48px', fontWeight: 'bold', textAlign: 'left', marginBottom: 0}}>Explore Landscapes Here</p>
+            <p style={{ fontSize: '48px', fontWeight: 'bold', textAlign: 'left', marginBottom: 0}}>{panelTitle}</p>
           </div>
         </div>
       </Col>

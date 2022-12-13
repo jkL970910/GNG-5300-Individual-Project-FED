@@ -65,7 +65,7 @@ export function PhotoUpload() {
                 </StyleCard>
             </Col>
             <Modal
-                title={'Merge Selected Columns'}
+                title={'Fill in photo information'}
                 open={showModal} 
                 width='50%' 
                 onCancel={() => {resetModal()}}

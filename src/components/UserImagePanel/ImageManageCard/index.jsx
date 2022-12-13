@@ -24,7 +24,7 @@ const ImageManageCard = (props) => {
           <div style={{ textAlign: 'left', flex: 1, margin: '30px' }}>
             <p style={{ fontSize: '48px', fontWeight: 'bold' }}>{title}</p>
           </div>
-          <Button onClick={() => {onChangeRequest(data, 'update')}}>Update</Button>
+          <Button style={{marginRight: '8px'}} onClick={() => {onChangeRequest(data, 'update')}}>Update</Button>
           <Popconfirm placement="topRight" title={"Are you sure you wanna delete this photo?"} okText="Yes" cancelText="No" onConfirm={() => {onChangeRequest(data, 'delete')}}>
             <Button>Delete</Button>
           </Popconfirm>

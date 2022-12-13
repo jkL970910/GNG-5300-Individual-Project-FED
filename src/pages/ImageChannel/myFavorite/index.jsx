@@ -20,7 +20,7 @@ export function MyFavorite() {
                         onRetry={refetch}
                         emptyDescription={"No photos yet, select your first favorite photo now!"}
                     >
-                        <ImagePanel data={data?.getLikePhotoList} refetch={refetch}/>
+                        <ImagePanel panelTitle={'Enjoy your favorite sights'} data={data?.getLikePhotoList} refetch={refetch}/>
                     </Suspense>
                 </StyleCard>
             </Col>

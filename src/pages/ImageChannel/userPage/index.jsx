@@ -7,6 +7,7 @@ import Suspense from '../../../components/Suspense';
 import { useUserPhotoList } from '../../../hooks/usePhotoGallery';
 import UserImagePanel from '../../../components/UserImagePanel';
 import { useUserFetch } from '../../../hooks/useLogin';
+import './index.css';
 
 const { Title } = Typography;
 
@@ -31,32 +32,28 @@ export function UserPage() {
                 </Col>
                 <Col span={18}>
                     <StyleCard title={`Manage Your Photos Here`} style={{ background: "rgb(218, 220, 224)" }}>
-                        <Carousel autoplay>
+                        <Suspense
+                            loading={loading}
+                            error={error}
+                            data={data?.getUserPhotoList}
+                            onRetry={retry}
+                        >   
+                        <Carousel autoplay={true}>
                             {data && data.getUserPhotoList.map((data) => {
                                 const url = data.imgUrl === '' ? data.imgLocal : data.imgUrl;
                                 return <div key={data.id}>
                                     <h3>{data.title}</h3>
-                                    <Image
-                                        style={{
-                                            minWidth: '100%',
-                                            minHeight: '100%',
-                                        }}
-                                        src={url}
-                                    />
+                                        <Image
+                                            style={{maxWidth:'48rem', height:'auto'}}
+                                            src={url}
+                                        />
                                 </div>
-                                
                             })}
-                        </Carousel>
-                        <Collapse>
+                            </Carousel>
+                        </Suspense>
+                        <Collapse className='collapse' style={{ marginTop: '12px', marginLeft: '24px', marginRight: '24px'}}>
                             <Collapse.Panel header={'Manage Your Photo'}>
-                                <Suspense
-                                    loading={loading}
-                                    error={error}
-                                    data={data}
-                                    onRetry={retry}
-                                >
-                                    <UserImagePanel data={data?.getUserPhotoList} refetch={retry}/>
-                                </Suspense>
+                                <UserImagePanel data={data?.getUserPhotoList} refetch={retry}/>
                             </Collapse.Panel>
                         </Collapse>
                     </StyleCard>

@@ -48,7 +48,6 @@ const UserImagePanel = (props) => {
   }
 
   const handleUpdate = (value) => {
-    console.log({photoID: selectedPhoto.id, photoTitle: value.title, description: value.description, imgUrl: selectedPhoto.imgUrl, imgLocal: selectedPhoto.imgLocal})
     setUpdatePhoto({ variables: {photoID: selectedPhoto.id, photoTitle: value.title, description: value.description, imgUrl: selectedPhoto.imgUrl, imgLocal: selectedPhoto.imgLocal} })
   }
 
@@ -67,7 +66,7 @@ const UserImagePanel = (props) => {
       ))}
       <Modal
         key={'updateModel'}
-        title={'Merge Selected Columns'}
+        title={'Update Your Photo'}
         open={showModal} 
         width='50%' 
         onCancel={() => {resetModal()}}

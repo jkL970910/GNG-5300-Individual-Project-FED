@@ -19,7 +19,7 @@ const ImageManageCard = (props) => {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <div style={{ textAlign: 'left' }}>
-            <img src={url} alt='' />
+            <img style={{maxWidth:300, height:'auto'}} src={url} alt='' />
           </div>
           <div style={{ textAlign: 'left', flex: 1, margin: '30px' }}>
             <p style={{ fontSize: '48px', fontWeight: 'bold' }}>{title}</p>

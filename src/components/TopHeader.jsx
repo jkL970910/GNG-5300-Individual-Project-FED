@@ -14,7 +14,16 @@ export function TopHeader() {
     function GetButton({title, url}) {
         let location = useLocation()
         return (
-            <Radio.Button key={url} style={{background: location.pathname === url ? "#bf80ff" : null}} value={url}>{title}</Radio.Button>
+            <Radio.Button 
+                key={url} 
+                style={{
+                    background: location.pathname === url ? null : 'rgba(0, 0, 0, 0.05)', 
+                    boxShadow: '0 3px 6px 0 rgb(235, 239, 250)'
+                }} 
+                value={url}
+            >
+                {title}
+            </Radio.Button>
         )
     }
 
@@ -23,8 +32,8 @@ export function TopHeader() {
         <Header style={{ background: 'white', position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
             <Row gutter={8}>
                 <Col span={6}>
-                    <div style={{ display: 'flex',  justifyContent: 'center', marginBottom: '8px'}}>
-                        {`Welcome! ${name?.username}`}
+                    <div style={{ fontSize: '24px', display: 'flex',  justifyContent: 'center', marginBottom: '8px'}}>
+                        {`Welcome back! ${name?.username}`}
                     </div>
                 </Col>
                 <Col span={12}>
@@ -37,7 +46,7 @@ export function TopHeader() {
                 </Col>
                 <Col span={6}>
                     <Link onClick={() => localStorage.removeItem('current_user')} to={'/login'} style={{ display: 'flex',  justifyContent: 'center', marginBottom: '8px'}}>
-                        Log out
+                        <p style={{ fontSize: '18px'}} >Log Out</p>
                     </Link>
                 </Col>
             </Row>

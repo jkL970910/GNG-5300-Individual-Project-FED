@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, message } from 'antd';
+import { Card, Image, message } from 'antd';
 import './index.css';
 import copy from 'copy-to-clipboard';
 import { HeartOutlined, ShareAltOutlined, LoadingOutlined } from '@ant-design/icons';
@@ -29,7 +29,10 @@ const ImageCard = (props) => {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <div style={{ textAlign: 'left' }}>
-            <img src={url} alt='' />
+            <Image
+              style={{maxWidth:'56rem', height:'auto'}}
+              src={url}
+            />
           </div>
           <div style={{ textAlign: 'left', flex: 1, margin: '30px' }}>
             <p style={{ fontSize: '48px', fontWeight: 'bold' }}>{title}</p>

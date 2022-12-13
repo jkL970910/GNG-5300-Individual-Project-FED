@@ -27,6 +27,7 @@ const Suspense = (props) => {
               image={<MehOutlined style={{ fontSize: 30, color: '#acacac' }} />}
               description={emptyDescription}
               imageStyle={{ height: 40 }}
+              style={{fontSize: 'large'}}
             />
           </div>
         )}
@@ -36,9 +37,10 @@ const Suspense = (props) => {
               image={<MehOutlined style={{ fontSize: 30, color: '#acacac' }} />}
               description= {data?.msg || "Fail to get the data"}
               imageStyle={{ height: 40 }}
+              style={{fontSize: 'large'}}
             >
               {
-                <Button size="small" type="primary" onClick={onRetry}>
+                <Button size="large" type="primary" onClick={onRetry}>
                   Retry
                 </Button>
               }

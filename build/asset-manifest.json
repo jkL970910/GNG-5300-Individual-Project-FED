@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/jkL970910/GNG-5300-Individual-Project-FED/static/css/main.5364f79c.css",
+    "main.js": "/jkL970910/GNG-5300-Individual-Project-FED/static/js/main.2209469a.js",
+    "static/js/787.f52b1513.chunk.js": "/jkL970910/GNG-5300-Individual-Project-FED/static/js/787.f52b1513.chunk.js",
+    "index.html": "/jkL970910/GNG-5300-Individual-Project-FED/index.html",
+    "static/media/index.less": "/jkL970910/GNG-5300-Individual-Project-FED/static/media/index.d906bd5dbaf13ee21a6b.less",
+    "main.5364f79c.css.map": "/jkL970910/GNG-5300-Individual-Project-FED/static/css/main.5364f79c.css.map",
+    "main.2209469a.js.map": "/jkL970910/GNG-5300-Individual-Project-FED/static/js/main.2209469a.js.map",
+    "787.f52b1513.chunk.js.map": "/jkL970910/GNG-5300-Individual-Project-FED/static/js/787.f52b1513.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5364f79c.css",
+    "static/js/main.2209469a.js"
+  ]
+}

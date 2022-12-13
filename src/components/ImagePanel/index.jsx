@@ -32,8 +32,10 @@ const ImagePanel = (props) => {
   return (
     <Row gutter={8}>
       <Col xl={24} lg={24} sm={24} xs={24}>
-        <div style={{ display: 'inline-block', float: 'left' }}>
-          <p style={{ fontSize: '32px', fontWeight: 'bold', textAlign: 'left', marginBottom: 0}}>Explore Landscapes Here</p>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div style={{ marginTop: '-24px', marginBottom: '16px', display: 'inline-block', float: 'center' }}>
+            <p style={{ fontSize: '48px', fontWeight: 'bold', textAlign: 'left', marginBottom: 0}}>Explore Landscapes Here</p>
+          </div>
         </div>
       </Col>
       {data && data.map((o) => (

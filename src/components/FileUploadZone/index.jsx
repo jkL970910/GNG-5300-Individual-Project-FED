@@ -13,7 +13,7 @@ function Dropzone({ onDrop, open }) {
       </li>
     ));
     return (
-      <StyleCard style={{ background: 'rgb(218, 220, 224)' }}>
+      <StyleCard style={{ background: 'rgb(218, 220, 224)', height: '250px' }}>
         <div {...getRootProps({ className: "dropzone" })}>
           <input className="input-zone" {...getInputProps()} />
           <div className="text-center">

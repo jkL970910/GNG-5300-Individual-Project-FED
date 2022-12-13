@@ -6,7 +6,7 @@ const StyleCard = (props) => {
   const { children, ...restOptions } = props;
   return (
     <>
-      <Card className={'common-card-style'} {...restOptions}>
+      <Card headStyle={{fontSize: 'x-large'}} className={'common-card-style'} {...restOptions}>
         {children}
       </Card>
     </>

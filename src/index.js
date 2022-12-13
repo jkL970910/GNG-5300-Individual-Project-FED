@@ -18,7 +18,7 @@ const defaultOptions = {
 }
 
 const client = new ApolloClient({
-  uri: "http://ec2-18-206-228-16.compute-1.amazonaws.com/graphql",
+  uri: "http://ec2-54-152-0-33.compute-1.amazonaws.com/graphql",
   cache: new InMemoryCache(),
   defaultOptions
 })
